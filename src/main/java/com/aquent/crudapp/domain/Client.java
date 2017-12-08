@@ -1,29 +1,29 @@
 package com.aquent.crudapp.domain;
 
-import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- * The person entity corresponding to the "person" table in the database.
+ * The client entity corresponding to the "client" table in the database.
  */
-public class Person {
+public class Client {
 
-    private Integer personId;
-
-    @NotNull
-    @Size(min = 1, max = 50, message = "First name is required with maximum length of 50")
-    private String firstName;
+    private Integer clientId;
 
     @NotNull
-    @Size(min = 1, max = 50, message = "Last name is required with maximum length of 50")
-    private String lastName;
+    @Size(min = 1, max = 50, message = "Company name is required with maximum length of 50")
+    private String companyName;
 
     @NotNull
-    @Size(min = 1, max = 50, message = "Email address is required with maximum length of 50")
-    @Email
-    private String emailAddress;
+    @Size(min = 1, max = 255, message = "Website URI is required with maximum length of 255")
+    @URL()
+    private String websiteURI;
+
+    @NotNull
+    @Size(min = 1, max = 20, message = "Phone Number is required with maximum length of 20")
+    private String phoneNumber;
 
     @NotNull
     @Size(min = 1, max = 50, message = "Street address is required with maximum length of 50")
@@ -41,36 +41,36 @@ public class Person {
     @Size(min = 5, max = 5, message = "Zip code is required with length 5")
     private String zipCode;
 
-    public Integer getPersonId() {
-        return personId;
+    public Integer getClientId() {
+        return clientId;
     }
 
-    public void setPersonId(Integer personId) {
-        this.personId = personId;
+    public void setClientId(Integer clientId) {
+        this.clientId = clientId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getWebsiteURI() {
+        return websiteURI;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setWebsiteURI(String websiteURI) {
+        this.websiteURI = websiteURI;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getStreetAddress() {

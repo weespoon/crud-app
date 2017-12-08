@@ -8,3 +8,20 @@ CREATE TABLE person (
     state varchar(2) NOT NULL,
     zip_code varchar(5) NOT NULL
 );
+
+CREATE TABLE client (
+    client_id integer IDENTITY,
+    company_name varchar(50) NOT NULL,
+    website_uri varchar(255) NOT NULL,
+    phone_number varchar(20) NOT NULL,
+    street_address varchar(50) NOT NULL,
+    city varchar(50) NOT NULL,
+    state varchar(2) NOT NULL,
+    zip_code varchar(5) NOT NULL
+);
+
+CREATE TABLE person_to_client (
+  id integer IDENTITY,
+  person_id integer,
+  client_id integer
+)
