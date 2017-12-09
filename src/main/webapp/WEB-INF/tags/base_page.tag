@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <c:url value="/resources/vendor/bootstrap4/css/bootstrap.css" var="bootstrapCss"/>
+    <c:url value="/resources/vendor/bootstrap3/css/bootstrap.css" var="bootstrapCss"/>
     <c:url value="/resources/css/crud.css" var="crudCss"/>
     <link href="${bootstrapCss}" rel="stylesheet"/>
     <link href="${crudCss}" rel="stylesheet"/>
@@ -39,10 +39,10 @@
             </c:when>
         </c:choose>
         <ul class="nav nav-pills">
-           <li class="nav-item">
+           <li class="nav-item ${personActive}">
                <a class="nav-link ${personActive}" href="${personUrl}">Connections</a>
            </li>
-            <li class="nav-item">
+            <li class="nav-item ${clientActive}">
                 <a class="nav-link ${clientActive}" href="${clientUrl}">Clients</a>
             </li>
         </ul>
@@ -58,14 +58,14 @@
 </footer>
 
 <c:url value="/resources/vendor/jquery.js" var="jQueryJS"/>
-<c:url value="/resources/vendor/jquery.validate.js" var="jQueryValidateJS"/>
 <c:url value="/resources/vendor/popper.js" var="popperJs"/>
-<c:url value="/resources/vendor/bootstrap4/js/bootstrap.js" var="bootstrapJs"/>
+<c:url value="/resources/vendor/bootstrap3/js/bootstrap.js" var="bootstrapJs"/>
+<c:url value="/resources/vendor/validator.js" var="bootstrapValidatorJs"/>
 
 <script src="${jQueryJS}"></script>
-<script src="${jQueryValidateJS}"></script>
 <script src="${popperJs}"></script>
 <script src="${bootstrapJs}"></script>
+<script src="${bootstrapValidatorJs}"></script>
 
 </body>
 </html>

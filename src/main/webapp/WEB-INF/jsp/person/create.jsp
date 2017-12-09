@@ -25,7 +25,7 @@
             </ul>
         </c:if>
 
-        <form action="${pageContext.request.contextPath}/person/create" method="POST">
+        <form class="cmxform" action="${pageContext.request.contextPath}/person/create" method="POST">
             <t:person_form person="${person}"/>
 
             <c:forEach items="${clients}" var="client">
