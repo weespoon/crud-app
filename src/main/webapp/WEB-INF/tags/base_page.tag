@@ -40,10 +40,10 @@
         </c:choose>
         <ul class="nav nav-pills">
            <li class="nav-item">
-               <a class="nav-link ${personActive}" href="${personUrl}">connection</a>
+               <a class="nav-link ${personActive}" href="${personUrl}">Connections</a>
            </li>
             <li class="nav-item">
-                <a class="nav-link ${clientActive}" href="${clientUrl}">client</a>
+                <a class="nav-link ${clientActive}" href="${clientUrl}">Clients</a>
             </li>
         </ul>
     </div>

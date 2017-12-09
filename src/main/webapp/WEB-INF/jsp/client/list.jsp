@@ -20,7 +20,7 @@
 
         <c:choose>
             <c:when test="${fn:length(clients) gt 0}">
-                <table>
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Company Name</th>
@@ -36,8 +36,8 @@
                                 <td>${client.websiteURI}</td>
                                 <td>${client.phoneNumber}</td>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/client/edit/${client.clientId}">Edit Client</a>
-                                    <a href="${pageContext.request.contextPath}/client/delete/${client.clientId}">Delete Client</a>
+                                    <a class="badge badge-primary" href="${pageContext.request.contextPath}/client/edit/${client.clientId}">Edit</a>
+                                    <a class="badge badge-dark" href="${pageContext.request.contextPath}/client/delete/${client.clientId}">Delete</a>
                                 </td>
                             </tr>
                         </c:forEach>

@@ -20,8 +20,8 @@
 
         <form action="${pageContext.request.contextPath}/client/delete" method="post">
             <input type="hidden" name="clientId" value="${client.clientId}"/>
-            <input type="submit" name="command" value="Cancel"/>
-            <input type="submit" name="command" value="Delete"/>
+            <input class="btn btn-primary" type="submit" name="command" value="Cancel"/>
+            <input class="btn btn-dark" type="submit" name="command" value="Delete"/>
         </form>
 
     </jsp:body>

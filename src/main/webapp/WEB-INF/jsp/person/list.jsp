@@ -18,7 +18,7 @@
     <jsp:body>
         <c:choose>
             <c:when test="${fn:length(persons) gt 0}">
-                <table>
+                <table class="table">
                     <thead>
                         <tr>
                             <th>First Name</th>
@@ -34,8 +34,8 @@
                                 <td>${person.lastName}</td>
                                 <td>${person.emailAddress}</td>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/person/edit/${person.personId}">Edit Person</a>
-                                    <a href="${pageContext.request.contextPath}/person/delete/${person.personId}">Delete Person</a>
+                                    <a class="badge badge-primary" href="${pageContext.request.contextPath}/person/edit/${person.personId}">Edit</a>
+                                    <a class="badge badge-dark" href="${pageContext.request.contextPath}/person/delete/${person.personId}">Delete</a>
                                 </td>
                             </tr>
                         </c:forEach>
