@@ -24,4 +24,3 @@
 <label for="${client.zipCode}">Zip Code:</label>
 <input type="text" name="zipCode" value="${person.zipCode}"/>
 <br/>
-<input type="submit" name="Submit" value="Submit"/>

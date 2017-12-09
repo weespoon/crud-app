@@ -40,4 +40,12 @@ INSERT INTO client (
     'Asheville',
     'NC',
     '28801'
+), (
+    'Performance Corp.',
+    'http://performance.co',
+    '123-456-0987',
+    '123 Any St.',
+    'Asheville',
+    'NC',
+    '28801'
 );

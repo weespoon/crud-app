@@ -27,6 +27,14 @@
 
         <form action="${pageContext.request.contextPath}/person/create" method="POST">
             <t:person_form person="${person}"/>
+
+            <c:forEach items="${clients}" var="client">
+                <br/>
+                <input type="radio" id="${client.clientId}" name="clientId" value="${client.clientId}"/>
+                <label for="${client.clientId}">${client.companyName}</label>
+            </c:forEach>
+            <br/>
+            <input type="submit" name="Submit" value="Submit"/>
         </form>
 
     </jsp:body>
