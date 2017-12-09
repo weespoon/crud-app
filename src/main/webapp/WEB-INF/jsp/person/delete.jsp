@@ -4,22 +4,27 @@
     Author     : FMilens
 --%>
 
+<%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
+<%@taglib prefix='fn' uri='http://java.sun.com/jsp/jstl/functions'%>
+<%@taglib prefix='t' tagdir='/WEB-INF/tags' %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+"http://www.w3.org/TR/html4/loose.dtd">
 
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Delete Person</title>
-    </head>
-    <body>
-        <h1>Delete Person</h1>
+<t:base_page>
+    <jsp:attribute name="title">Delete Person</jsp:attribute>
+
+    <jsp:body>
+
         <p>You are about to delete the person ${person.firstName} ${person.lastName}:  Are you sure?</p>
+
         <form action="${pageContext.request.contextPath}/person/delete" method="post">
             <input type="hidden" name="personId" value="${person.personId}"/>
             <input type="submit" name="command" value="Cancel"/>
             <input type="submit" name="command" value="Delete"/>
         </form>
-    </body>
-</html>
+
+    </jsp:body>
+</t:base_page>
+

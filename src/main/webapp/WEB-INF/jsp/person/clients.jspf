@@ -1,0 +1,15 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: ewith
+  Date: 12/8/17
+  Time: 6:06 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<c:if test="${pageContext.request.contextPath.clients:length(errors) gt 0}">
+    <p>Please correct the following errors in your submission:</p>
+    <ul>
+        <c:forEach items="${errors}" var="error">
+            <li>${error}</li>
+        </c:forEach>
+    </ul>
+</c:if>

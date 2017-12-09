@@ -6,7 +6,8 @@ CREATE TABLE person (
     street_address varchar(50) NOT NULL,
     city varchar(50) NOT NULL,
     state varchar(2) NOT NULL,
-    zip_code varchar(5) NOT NULL
+    zip_code varchar(5) NOT NULL,
+    client_id integer NULL
 );
 
 CREATE TABLE client (
@@ -20,8 +21,3 @@ CREATE TABLE client (
     zip_code varchar(5) NOT NULL
 );
 
-CREATE TABLE person_to_client (
-  id integer IDENTITY,
-  person_id integer,
-  client_id integer
-)
