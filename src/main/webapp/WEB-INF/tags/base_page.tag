@@ -1,4 +1,5 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@attribute name="title" fragment="true" %>
 <%@attribute name="header" fragment="true" %>
 <%@attribute name="footer" fragment="true" %>
@@ -19,6 +20,9 @@
 </div>
 
 <footer id="pagefooter">
+    <c:url value="/person/list" var="personUrl" />
+    <c:url value="/client/list" var="clientUrl" />
+    <a href="${personUrl}">connection</a> | <a href="${clientUrl}">client</a>
     <jsp:invoke fragment="footer"/>
 </footer>
 </body>

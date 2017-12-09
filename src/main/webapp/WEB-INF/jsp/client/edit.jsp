@@ -31,6 +31,19 @@
             <input type="hidden" name="clientId" value="${client.clientId}"/>
             <br/>
             <t:client_form client="${client}"/>
+
+            <c:forEach items="${people}" var="person">
+                <input type="checkbox" id="${person.personId}" name="personId" value="${person.personId}"
+                        <c:choose>
+                            <c:when test="${person.clientId eq client.clientId}">
+                                checked
+                            </c:when>
+                        </c:choose>
+                />
+                <label for="${person.personId}">${person.firstName} ${person.lastName}</label>
+                <br/>
+            </c:forEach>
+            <input type="submit" name="Submit" value="Submit"/>
         </form>
 
     </jsp:body>

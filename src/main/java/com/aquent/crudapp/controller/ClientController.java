@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.aquent.crudapp.service.PersonService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ public class ClientController {
     public static final String COMMAND_DELETE = "Delete";
 
     @Inject private ClientService clientService;
+    @Inject private PersonService personService;
 
     /**
      * Renders the listing page.
@@ -48,6 +50,7 @@ public class ClientController {
         ModelAndView mav = new ModelAndView("client/create");
         mav.addObject("client", new Client());
         mav.addObject("errors", new ArrayList<String>());
+        mav.addObject("people", personService.listPeople());
         return mav;
     }
 
@@ -69,6 +72,7 @@ public class ClientController {
             ModelAndView mav = new ModelAndView("client/create");
             mav.addObject("client", client);
             mav.addObject("errors", errors);
+            mav.addObject("people", personService.listPeople());
             return mav;
         }
     }
@@ -84,6 +88,7 @@ public class ClientController {
         ModelAndView mav = new ModelAndView("client/edit");
         mav.addObject("client", clientService.readClient(clientId));
         mav.addObject("errors", new ArrayList<String>());
+        mav.addObject("people", personService.listPeople());
         return mav;
     }
 
@@ -105,6 +110,7 @@ public class ClientController {
             ModelAndView mav = new ModelAndView("client/edit");
             mav.addObject("client", client);
             mav.addObject("errors", errors);
+            mav.addObject("people", personService.listPeople());
             return mav;
         }
     }

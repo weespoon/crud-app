@@ -13,7 +13,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 
 <t:base_page>
-    <jsp:attribute name="title">Client Listing</jsp:attribute>
+    <jsp:attribute name="title">Connections Listing</jsp:attribute>
 
     <jsp:body>
 

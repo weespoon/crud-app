@@ -28,6 +28,13 @@
 
         <form action="${pageContext.request.contextPath}/client/create" method="POST">
             <t:client_form client="${client}"/>
+
+            <c:forEach items="${people}" var="person">
+                <input type="checkbox" id="${person.personId}" name="personId" value="${person.personId}"/>
+                <label for="${person.personId}">${person.firstName} ${person.lastName}</label>
+                <br/>
+            </c:forEach>
+            <input type="submit" name="Submit" value="Submit"/>
         </form>
 
     </jsp:body>

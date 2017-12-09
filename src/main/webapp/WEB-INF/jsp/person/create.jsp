@@ -29,11 +29,10 @@
             <t:person_form person="${person}"/>
 
             <c:forEach items="${clients}" var="client">
-                <br/>
                 <input type="radio" id="${client.clientId}" name="clientId" value="${client.clientId}"/>
                 <label for="${client.clientId}">${client.companyName}</label>
+                <br/>
             </c:forEach>
-            <br/>
             <input type="submit" name="Submit" value="Submit"/>
         </form>
 
