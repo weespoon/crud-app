@@ -33,7 +33,7 @@
             <c:forEach items="${clients}" var="client">
                 <input type="radio" id="${client.clientId}" name="clientId" value="${client.clientId}"
                     <c:choose>
-                        <c:when test="${client.clientId eq person.clientId}">
+                        <c:when test="${not empty person.clientId and client.clientId eq person.clientId}">
                             checked
                         </c:when>
                     </c:choose>

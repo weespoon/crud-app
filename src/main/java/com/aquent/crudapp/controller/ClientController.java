@@ -1,7 +1,8 @@
 package com.aquent.crudapp.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.inject.Inject;
 
@@ -64,10 +65,16 @@ public class ClientController {
      * @return redirect, or create view with errors
      */
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    public ModelAndView create(Client client) {
+    public ModelAndView create(Client client, @RequestParam(value = "personId", required=false)String[] personIds) {
         List<String> errors = clientService.validateClient(client);
         if (errors.isEmpty()) {
-            clientService.createClient(client);
+            Integer clientId = clientService.createClient(client);
+
+            if (null != personIds) {
+                List<Integer> newClientPeopleIds = Stream.of(personIds).map(Integer::valueOf).collect(Collectors.toList());
+                addClientConnections(newClientPeopleIds, clientId);
+            }
+
             return new ModelAndView("redirect:/client/list");
         } else {
             ModelAndView mav = new ModelAndView("client/create");
@@ -102,16 +109,26 @@ public class ClientController {
      * @return redirect, or edit view with errors
      */
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public ModelAndView edit(Client client, @RequestParam("personId")String[] personIds) {
+    public ModelAndView edit(Client client, @RequestParam(value = "personId", required=false)String[] personIds) {
         List<String> errors = clientService.validateClient(client);
         if (errors.isEmpty()) {
             clientService.updateClient(client);
-            // TODO: Extend, this checks new entries but does not clear checks
-            for(String pid : personIds) {
-                Person person = personService.readPerson(Integer.parseInt(pid));
-                person.setClientId(client.getClientId());
-                personService.updatePerson(person);
+
+            if (null == personIds) {
+                personIds = new String[0];
             }
+
+            // resolve new and old connections
+            List<Person> priorClientPeople = personService.listClientPeople(client.getClientId());
+            List<Integer> priorClientPeopleIds = priorClientPeople.stream().map(Person::getPersonId).collect(Collectors.toList());
+            List<Integer> newClientPeopleIds = Stream.of(personIds).map(Integer::valueOf).collect(Collectors.toList());
+            List<Integer> removeIds = new ArrayList<Integer>(priorClientPeopleIds);
+            removeIds.removeAll(newClientPeopleIds);
+            newClientPeopleIds.removeAll(priorClientPeopleIds);
+
+            addClientConnections(newClientPeopleIds, client.getClientId());
+            removeClientConnections(removeIds);
+
             return new ModelAndView("redirect:/client/list");
         } else {
             ModelAndView mav = new ModelAndView("client/edit");
@@ -145,8 +162,29 @@ public class ClientController {
     @RequestMapping(value = "delete", method = RequestMethod.POST)
     public String delete(@RequestParam String command, @RequestParam Integer clientId) {
         if (COMMAND_DELETE.equals(command)) {
+            // clean up connections first
+            List<Person> priorClientPeople = personService.listClientPeople(clientId);
+            List<Integer> priorClientPeopleIds = priorClientPeople.stream().map(Person::getPersonId).collect(Collectors.toList());
+            removeClientConnections(priorClientPeopleIds);
+
             clientService.deleteClient(clientId);
         }
         return "redirect:/client/list";
+    }
+
+    private void addClientConnections(List<Integer> personIds, Integer clientId) {
+        for(Integer pid : personIds) {
+            Person person = personService.readPerson(pid);
+            person.setClientId(clientId);
+            personService.updatePerson(person);
+        }
+    }
+
+    private void removeClientConnections(List<Integer> personIds) {
+        for(Integer pid : personIds) {
+            Person person = personService.readPerson(pid);
+            person.setClientId(null);
+            personService.updatePerson(person);
+        }
     }
 }
