@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.aquent.crudapp.domain.Person;
 import com.aquent.crudapp.service.PersonService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -101,10 +102,16 @@ public class ClientController {
      * @return redirect, or edit view with errors
      */
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public ModelAndView edit(Client client) {
+    public ModelAndView edit(Client client, @RequestParam("personId")String[] personIds) {
         List<String> errors = clientService.validateClient(client);
         if (errors.isEmpty()) {
             clientService.updateClient(client);
+            // TODO: Extend, this checks new entries but does not clear checks
+            for(String pid : personIds) {
+                Person person = personService.readPerson(Integer.parseInt(pid));
+                person.setClientId(client.getClientId());
+                personService.updatePerson(person);
+            }
             return new ModelAndView("redirect:/client/list");
         } else {
             ModelAndView mav = new ModelAndView("client/edit");
