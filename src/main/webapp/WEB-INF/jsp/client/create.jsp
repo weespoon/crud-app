@@ -26,7 +26,7 @@
             </ul>
         </c:if>
 
-        <form action="${pageContext.request.contextPath}/client/create" method="POST">
+        <form role="form" data-toggle="validator" action="${pageContext.request.contextPath}/client/create" method="POST">
             <t:client_form client="${client}"/>
 
             <c:forEach items="${people}" var="person">

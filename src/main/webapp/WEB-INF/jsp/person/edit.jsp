@@ -26,7 +26,7 @@
             </ul>
         </c:if>
 
-        <form action="${pageContext.request.contextPath}/person/edit" method="POST">
+        <form role="form" data-toggle="validator" action="${pageContext.request.contextPath}/person/edit" method="POST">
             <input type="hidden" name="personId" value="${person.personId}"/>
             <t:person_form person="${person}"/>
 
