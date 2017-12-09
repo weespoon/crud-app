@@ -18,7 +18,6 @@
 
     <jsp:body>
 
-        <p><a href="${pageContext.request.contextPath}/client/create">Create New Client</a></p>
         <c:choose>
             <c:when test="${fn:length(clients) gt 0}">
                 <table>
@@ -49,6 +48,8 @@
                 <p>No results found.</p>
             </c:otherwise>
         </c:choose>
+
+        <a class="btn btn-primary breathe" href="${pageContext.request.contextPath}/client/create">Create New Client</a>
 
     </jsp:body>
 </t:base_page>

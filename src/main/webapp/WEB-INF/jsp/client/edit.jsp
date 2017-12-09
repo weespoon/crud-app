@@ -33,17 +33,22 @@
             <t:client_form client="${client}"/>
 
             <c:forEach items="${people}" var="person">
-                <input type="checkbox" id="${person.personId}" name="personId" value="${person.personId}"
-                        <c:choose>
-                            <c:when test="${person.clientId eq client.clientId}">
-                                checked
-                            </c:when>
-                        </c:choose>
-                />
-                <label for="${person.personId}">${person.firstName} ${person.lastName}</label>
-                <br/>
+                <div class="form-check">
+                    <label class="form-check-label" for="${person.personId}">
+                        <input class="form-check-input" type="checkbox" id="${person.personId}" name="personId" value="${person.personId}"
+                                <c:choose>
+                                    <c:when test="${person.clientId eq client.clientId}">
+                                        checked
+                                    </c:when>
+                                </c:choose>
+                        />
+                        ${person.firstName} ${person.lastName}
+                    </label>
+                </div>
             </c:forEach>
-            <input type="submit" name="Submit" value="Submit"/>
+            <div class="form-group">
+                <input class="form-control" type="submit" name="Submit" value="Submit"/>
+            </div>
         </form>
 
     </jsp:body>

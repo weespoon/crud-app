@@ -16,8 +16,6 @@
     <jsp:attribute name="title">Connections Listing</jsp:attribute>
 
     <jsp:body>
-
-        <p><a href="${pageContext.request.contextPath}/person/create">Create New Person</a></p>
         <c:choose>
             <c:when test="${fn:length(persons) gt 0}">
                 <table>
@@ -48,5 +46,7 @@
                 <p>No results found.</p>
             </c:otherwise>
         </c:choose>
+
+        <a class="btn btn-primary breathe" href="${pageContext.request.contextPath}/person/create">Create New Person</a>
     </jsp:body>
 </t:base_page>

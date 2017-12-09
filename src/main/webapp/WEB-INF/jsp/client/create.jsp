@@ -30,11 +30,17 @@
             <t:client_form client="${client}"/>
 
             <c:forEach items="${people}" var="person">
-                <input type="checkbox" id="${person.personId}" name="personId" value="${person.personId}"/>
-                <label for="${person.personId}">${person.firstName} ${person.lastName}</label>
-                <br/>
+                <div class="form-check">
+                    <label class="form-check-label" for="${person.personId}">
+                        <input class="form-check-input" type="checkbox" id="${person.personId}" name="personId" value="${person.personId}"/>
+                        ${person.firstName} ${person.lastName}
+                    </label>
+                </div>
             </c:forEach>
-            <input type="submit" name="Submit" value="Submit"/>
+            <div class="form-group">
+                <input class="form-control" type="submit" name="Submit" value="Submit"/>
+            </div>
+
         </form>
 
     </jsp:body>

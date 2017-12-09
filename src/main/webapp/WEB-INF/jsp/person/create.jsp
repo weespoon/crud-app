@@ -29,11 +29,17 @@
             <t:person_form person="${person}"/>
 
             <c:forEach items="${clients}" var="client">
-                <input type="radio" id="${client.clientId}" name="clientId" value="${client.clientId}"/>
-                <label for="${client.clientId}">${client.companyName}</label>
-                <br/>
+
+                <div class="form-check">
+                    <label class="form-check-label" for="${client.clientId}">
+                        <input class="form-check-input" type="radio" id="${client.clientId}" name="clientId" value="${client.clientId}"/>
+                        ${client.companyName}
+                    </label>
+                </div>
             </c:forEach>
-            <input type="submit" name="Submit" value="Submit"/>
+                <div class="form-group">
+                    <input class="form-control" type="submit" name="Submit" value="Submit"/>
+                </div>
         </form>
 
     </jsp:body>
