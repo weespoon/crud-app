@@ -45,5 +45,9 @@
                 </tr>
             </tbody>
         </table>
+        <div class="btn-group btn-group-sm">
+            <a class="btn btn-default" href="${pageContext.request.contextPath}/person/edit/${person.personId}">Edit</a>
+            <a class="btn btn-default" href="${pageContext.request.contextPath}/person/delete/${person.personId}">Delete</a>
+        </div>
     </jsp:body>
 </t:base_page>

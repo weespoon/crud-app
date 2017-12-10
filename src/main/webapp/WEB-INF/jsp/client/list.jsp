@@ -36,8 +36,11 @@
                                 <td>${client.websiteURI}</td>
                                 <td>${client.phoneNumber}</td>
                                 <td>
-                                    <a class="badge badge-primary" href="${pageContext.request.contextPath}/client/edit/${client.clientId}">Edit</a>
-                                    <a class="badge badge-dark" href="${pageContext.request.contextPath}/client/delete/${client.clientId}">Delete</a>
+                                    <div class="btn-group btn-group-sm">
+                                        <a class="btn btn-default" href="${pageContext.request.contextPath}/client/view/${client.clientId}">View</a>
+                                        <a class="btn btn-default" href="${pageContext.request.contextPath}/client/edit/${client.clientId}">Edit</a>
+                                        <a class="btn btn-default" href="${pageContext.request.contextPath}/client/delete/${client.clientId}">Delete</a>
+                                    </div>
                                 </td>
                             </tr>
                         </c:forEach>

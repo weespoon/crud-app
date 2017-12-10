@@ -27,6 +27,17 @@ INSERT INTO person (
     'Asheville',
     'NC',
     '28801',
+    1
+
+) , (
+    3,
+    'Joan',
+    'Smiley',
+    'fake3@aquent.com',
+    '123 Any St.',
+    'Asheville',
+    'NC',
+    '28801',
     2
 
 );
