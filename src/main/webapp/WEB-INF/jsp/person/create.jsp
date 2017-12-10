@@ -28,18 +28,22 @@
         <form role="form" data-toggle="validator" action="${pageContext.request.contextPath}/person/create" method="POST">
             <t:person_form person="${person}"/>
 
-            <c:forEach items="${clients}" var="client">
+            <fieldset>
+                <legend>Client</legend>
+                <c:forEach items="${clients}" var="client">
 
-                <div class="form-check">
-                    <label class="form-check-label" for="${client.clientId}">
-                        <input class="form-check-input" type="radio" id="${client.clientId}" name="clientId" value="${client.clientId}"/>
-                        ${client.companyName}
-                    </label>
-                </div>
-            </c:forEach>
-                <div class="form-group">
-                    <input class="form-control" type="submit" name="Submit" value="Submit"/>
-                </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="${client.clientId}">
+                            <input class="form-check-input" type="radio" id="${client.clientId}" name="clientId" value="${client.clientId}"/>
+                            ${client.companyName}
+                        </label>
+                    </div>
+                </c:forEach>
+            </fieldset>
+
+            <div class="form-group">
+                <input class="form-control" type="submit" name="Submit" value="Submit"/>
+            </div>
         </form>
 
     </jsp:body>

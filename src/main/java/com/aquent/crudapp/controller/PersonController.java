@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.aquent.crudapp.domain.Client;
 import com.aquent.crudapp.service.ClientService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -75,6 +76,25 @@ public class PersonController {
             mav.addObject("clients", clientService.listClients());
             return mav;
         }
+    }
+
+    /**
+     * Views an existing person record.
+     *
+     * @param personId the ID of the person to edit
+     * @return edit view populated from the person record
+     */
+    @RequestMapping(value = "view/{personId}", method = RequestMethod.GET)
+    public ModelAndView view(@PathVariable Integer personId) {
+        ModelAndView mav = new ModelAndView("person/view");
+        Person person = personService.readPerson(personId);
+        mav.addObject("person", person);
+        if (null == person.getClientId() || 0 == person.getClientId()) {
+            mav.addObject("client", new Client());
+        } else {
+            mav.addObject("client", clientService.readClient(person.getClientId()));
+        }
+        return mav;
     }
 
     /**

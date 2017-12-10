@@ -13,7 +13,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 
 <t:base_page>
-    <jsp:attribute name="title">Connections Listing</jsp:attribute>
+    <jsp:attribute name="title">People Listing</jsp:attribute>
 
     <jsp:body>
         <c:choose>
@@ -34,8 +34,11 @@
                                 <td>${person.lastName}</td>
                                 <td>${person.emailAddress}</td>
                                 <td>
-                                    <a class="badge badge-primary" href="${pageContext.request.contextPath}/person/edit/${person.personId}">Edit</a>
-                                    <a class="badge badge-dark" href="${pageContext.request.contextPath}/person/delete/${person.personId}">Delete</a>
+                                    <div class="btn-group btn-group-sm">
+                                        <a class="btn btn-default" href="${pageContext.request.contextPath}/person/view/${person.personId}">View</a>
+                                        <a class="btn btn-default" href="${pageContext.request.contextPath}/person/edit/${person.personId}">Edit</a>
+                                        <a class="btn btn-default" href="${pageContext.request.contextPath}/person/delete/${person.personId}">Delete</a>
+                                    </div>
                                 </td>
                             </tr>
                         </c:forEach>

@@ -28,19 +28,15 @@
     <div class="container">
         <c:url value="/person/list" var="personUrl" />
         <c:url value="/client/list" var="clientUrl" />
-        <c:choose>
-            <c:when test="${fn:containsIgnoreCase(pageContext.request.requestURL, 'person')}">
-                <c:set value="active" var="personActive" />
-            </c:when>
-        </c:choose>
-        <c:choose>
-            <c:when test="${fn:containsIgnoreCase(pageContext.request.requestURL, 'client')}">
-                <c:set value="active" var="clientActive" />
-            </c:when>
-        </c:choose>
+        <c:if test="${fn:containsIgnoreCase(pageContext.request.requestURL, 'person')}">
+            <c:set value="active" var="personActive" />
+        </c:if>
+        <c:if test="${fn:containsIgnoreCase(pageContext.request.requestURL, 'client')}">
+            <c:set value="active" var="clientActive" />
+        </c:if>
         <ul class="nav nav-pills">
            <li class="nav-item ${personActive}">
-               <a class="nav-link ${personActive}" href="${personUrl}">Connections</a>
+               <a class="nav-link ${personActive}" href="${personUrl}">People</a>
            </li>
             <li class="nav-item ${clientActive}">
                 <a class="nav-link ${clientActive}" href="${clientUrl}">Clients</a>

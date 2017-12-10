@@ -30,20 +30,22 @@
             <input type="hidden" name="personId" value="${person.personId}"/>
             <t:person_form person="${person}"/>
 
-            <c:forEach items="${clients}" var="client">
-                <div class="form-check">
-                    <label class="form-check-label" for="${client.clientId}">
-                        <input class="form-check-input" type="radio" id="${client.clientId}" name="clientId" value="${client.clientId}"
-                            <c:choose>
-                                <c:when test="${not empty person.clientId and client.clientId eq person.clientId}">
+            <fieldset>
+                <legend>Client</legend>
+                <c:forEach items="${clients}" var="client">
+                    <div class="form-check">
+                        <label class="form-check-label" for="${client.clientId}">
+                            <input class="form-check-input" type="radio" id="${client.clientId}" name="clientId" value="${client.clientId}"
+                                <c:if test="${not empty person.clientId and client.clientId eq person.clientId}">
                                     checked
-                                </c:when>
-                            </c:choose>
-                        />
-                        ${client.companyName}
-                    </label>
-                </div>
-            </c:forEach>
+                                </c:if>
+                            />
+                            ${client.companyName}
+                        </label>
+                    </div>
+                </c:forEach>
+            </fieldset>
+
             <div class="form-group">
                 <input class="form-control" type="submit" name="Submit" value="Submit"/>
             </div>

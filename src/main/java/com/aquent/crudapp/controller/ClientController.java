@@ -86,6 +86,20 @@ public class ClientController {
     }
 
     /**
+     * Renders an empty form used to create a new client record.
+     *
+     * @return create view populated with an empty client
+     */
+    @RequestMapping(value = "view/{clientId}", method = RequestMethod.GET)
+    public ModelAndView view(@PathVariable Integer clientId) {
+        ModelAndView mav = new ModelAndView("client/view");
+        Client client = clientService.readClient(clientId);
+        mav.addObject("client", client);
+        mav.addObject("people", personService.listClientPeople(clientId));
+        return mav;
+    }
+
+    /**
      * Renders an edit form for an existing client record.
      *
      * @param clientId the ID of the client to edit

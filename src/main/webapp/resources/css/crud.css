@@ -6,3 +6,7 @@ navigation .container, .breathe {
 .badge-dark, .btn-dark {
     margin-left: 1em;
 }
+
+.nav-item {
+    margin-right: 1em;
+}
